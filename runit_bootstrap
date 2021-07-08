@@ -22,4 +22,4 @@ echo "Running fastcgi-mono on port $FASTCGI_PORT"
 
 # http://www.hnwatcher.com/r/1539872/Using-Runit-in-a-Docker-Container
 export > /etc/envvars
-exec /usr/sbin/runsvdir-start
+exec /etc/runit/2
