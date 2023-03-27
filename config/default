@@ -1,10 +1,17 @@
 # The NGINX_PORT, FASTCGI_PORT and APP_ROOT values are replaced by runit_bootstrap script which reads the values from environment variables with the same name
 # Default values set in bootstrap are:
 # NGINX_PORT: 80
+# NGINX_TLS: 8443
 # FASTCGI_PORT: 9000
 # APP_ROOT: /var/www
 server {
 	listen <NGINX_PORT>;
+
+	# SSL configuration
+	ssl_certificate /etc/ssl/certs/nginx-selfsigned-test-cert.crt;
+	ssl_certificate_key /etc/ssl/private/nginx-selfsigned-test-cert.key;
+    listen <NGINX_TLS> ssl default_server;
+    listen [::]:<NGINX_TLS> ssl default_server;
 
 	location / {
 		root <APP_ROOT>;

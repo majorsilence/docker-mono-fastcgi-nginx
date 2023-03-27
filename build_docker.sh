@@ -3,7 +3,7 @@ set -e # exit on first error
 set -u # exit on using unset variable
 
 echo "Building majorsilence/docker-mono-fastcgi-nginx:latest"
-docker build -f ./Dockerfile -t majorsilence/docker-mono-fastcgi-nginx --rm=true -m 2GB .
+docker build --progress plain -f ./Dockerfile -t majorsilence/docker-mono-fastcgi-nginx .
 echo 'majorsilence/docker-mono-fastcgi-nginx:latest built'
 
 GITHASH="$(git rev-parse --short HEAD)"
